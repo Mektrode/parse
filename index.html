@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Todo App Built on Parse</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
+
+	<style>
+		body {
+			font-family: "HelveticaNeue-Light", sans-serif;
+			font-weight:300;
+		}
+		h2 {
+			font-size:16px;
+			text-transform:uppercase;
+		}
+		a {
+			text-decoration:none;
+		}
+		.hidden {
+			display:none;
+		}
+		#main {
+			text-align:center;
+		}
+		input {
+			padding: 10px;
+			border-radius: 3px;
+			border:1px solid #ccc;
+			box-shadow: inset 0 0 10px #eee;
+			font-size:24px;
+		}
+		
+		#input-wrapper {
+			padding-bottom:15px;
+		}
+		
+		#list-item-submit {
+			background: #73D175;
+			color: white;
+			box-shadow:none;
+			border-color: #599E5A;
+		}
+	
+		li {
+			text-align:left;
+			font-family:sans-serif;
+			list-style: none;
+			padding: 10px 0;
+			border-bottom:1px solid #ccc;
+			margin-left:-10px;
+			
+		}
+		li input {
+			margin-right:15px;
+		}
+	
+	</style>
+</head>
+
+<body>
+  <h1>Todo List built on <a href="http://www.parse.com" alt="Parse">Parse</a></h1>
+  <div id="main">
+		<div id="input-wrapper">
+			<input type="text" id="list-input" placeholder="Enter a todo here...">
+			<input type="button" id="list-item-submit" value="Add">
+		</div>
+		<div>
+			<h2>Incomplete Tasks</h2>
+			<ul id="incomplete-items">
+				<li id="no-incomplete-message">There are no incomplete tasks! Consider adding one above.</li>
+			</ul>
+		</div>
+	
+  </div>
+
+	<script id="todo-items-template" type="x/handlebars">
+		<li class="list-item"><input type="checkbox" id="{id}">{content}</li>
+	</script>
+
+	<script>
+		YUI().use('node', function(Y) {
+			
+			var ListItem, 
+			query,
+			noTasksMessage = Y.one('#no-incomplete-message'),
+			submitBtn = Y.one("#list-item-submit"),
+			incompleteItemList = Y.one('#incomplete-items'),
+			completeItemList = Y.one('#complete-items'),
+			input = Y.one("#list-input");
+			
+			
+			Parse.initialize("W6onLVmSx7BtH88qkn9tCvFRzUT2dj2T3NnSmSAR", "oTwwBgpTbnaDXKw8l6CGvDxh01gpmCWEAsNNO5Bj");
+			
+			//Handle Click Event
+			submitBtn.on('click', function(e) {
+				
+				//Save the current Todo
+				var text = Y.one('#list-input').get('value');
+				var ListItem = Parse.Object.extend("ListItem");
+				var listItem = new ListItem();
+
+				listItem.set("content", text);
+				listItem.set("isComplete", false);
+				
+				//Once it is saved, show it in the list of todo's.
+				listItem.save(null, {
+				  success: function(item) {
+						noTasksMessage.addClass('hidden');
+				    var content = Y.Lang.sub(Y.one('#todo-items-template').getHTML(), {
+							content: item.get('content'),
+							id: item.id,
+							isComplete: item.get('isComplete')
+						});
+						incompleteItemList.append(content);
+						input.set('value', '').focus();
+				  },
+				  error: function(gameScore, error) {
+						alert("Error when saving Todos: " + error.code + " " + error.message);
+				  }
+				});
+			});
+			
+			
+			
+			//Get 10 most recent incomplete Todos.
+			ListItem = Parse.Object.extend("ListItem");
+			query = new Parse.Query(ListItem);
+			query.equalTo('isComplete', false)
+			query.limit = 10;
+			query.descending('createdAt');
+			query.find({
+			  success: function(results) {
+					if (results.length > 0) {
+						noTasksMessage.addClass('hidden');
+					}
+					//Append each of the incomplete tasks to the Incomplete List
+					Y.Array.each(results, function(val, i, arr) {
+						var content = Y.Lang.sub(Y.one('#todo-items-template').getHTML(), {
+							content: val.get('content'),
+							id: val.id,
+							isComplete: false
+						});
+						incompleteItemList.append(content);
+					});
+					
+					//When the checkbox is clicked for any of the items in the incomplete list, update it as complete.
+					incompleteItemList.delegate('click', function (e) {
+						var self = this;
+						query = new Parse.Query(ListItem);
+						query.get(self.one('input').get('id'), {
+						  success: function(item) {
+						    item.set('isComplete', true);
+								item.save();
+								self.remove();
+
+								if (incompleteItemList.all('li').size() >= 1) {
+									noTasksMessage.removeClass('hidden');
+								}
+								
+						  },
+						  error: function(object, error) {
+								alert("Error when updating todo item: " + error.code + " " + error.message);
+						  }
+						});
+					}, 'li');
+			  },
+			  error: function(error) {
+			    alert("Error when retrieving Todos: " + error.code + " " + error.message);
+			  }
+			});
+			
+		});
+	</script>
+</body>
+
+</html>
