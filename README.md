@@ -1,4 +1,4 @@
-PTSD
+Parse Notes test/doodle
 ====
 
-parse test with to-do list
+Playing with a Parse to-do list ^-^ :)
