@@ -5,10 +5,11 @@
   <title>Todo App Built on Parse</title>
   <meta name="description" content="My Parse App">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/reset.css">
+  <!--<link rel="stylesheet" href="css/reset.css">-->
   <link rel="stylesheet" href="css/styles.css">
   <script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
   <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 	<style>
 		body {
@@ -54,36 +55,88 @@
 			padding: 10px 0;
 			border-bottom:1px solid #ccc;
 			margin-left:-10px;
-			
 		}
+
 		li input {
 			margin-right:15px;
 		}
-	
+
+		#loader {
+			padding: 10px;
+			margin-left: 40%;
+			margin-top: 25%;
+			width: 200px;
+			height: 120px;
+			background-color: white;
+		    border: solid #ddd;
+		    border-width: 0 1px 1px 1px;
+		}
+
+		.center {
+			width: 50px;
+			height: 50px;
+			text-align: center;
+		}
+		
+		body {
+		    background: #eee;
+		    text-align: center;
+		    padding: 0 25px;
+		}
+
+		#main {
+		    width: 500px;
+		    margin: auto;
+		    text-align: left;
+		    background: white;
+		    padding: 50px 60px;
+		    border: solid #ddd;
+		    border-width: 0 1px 1px 1px;
+		}
+
+		#main h1 {
+		    margin-top: 0;
+		    font-size: 35px;
+		}
+
+
 	</style>
 </head>
 
 <body>
-  <h1>Todo List built on <a href="http://www.parse.com" alt="Parse">Parse</a></h1>
-  <div id="main">
-		<div id="input-wrapper">
-			<input type="text" id="list-input" placeholder="Enter a todo here...">
-			<input type="button" id="list-item-submit" value="Add">
-		</div>
-		<div>
-			<h2>Incomplete Tasks</h2>
-			<ul id="incomplete-items">
-				<li id="no-incomplete-message">There are no incomplete tasks! Consider adding one above.</li>
-			</ul>
-		</div>
-	
-  </div>
+
+	<div id="loader">
+		<h2>Loading...</h2>
+		<img src="load.gif" class="center">
+	</div>
+
+	<div id="big" class="hidden">
+	  <h1>Todo List built on <a href="http://www.parse.com" alt="Parse">Parse</a></h1>
+	  <div id="main">
+			<div id="input-wrapper">
+				<input type="text" id="list-input" placeholder="Enter a todo here...">
+				<input type="button" id="list-item-submit" value="Add">
+			</div>
+			<div>
+				<h2>Incomplete Tasks</h2>
+				<ul id="incomplete-items">
+					<li id="no-incomplete-message">There are no incomplete tasks! Consider adding one above.</li>
+				</ul>
+			</div>
+	  </div>
+	</div>
 
 	<script id="todo-items-template" type="x/handlebars">
 		<li class="list-item"><input type="checkbox" id="{id}">{content}</li>
 	</script>
 
 	<script>
+					
+		setTimeout(function(){$('body').ready(function (){$('#loader').fadeOut(500);});},2000);
+
+		setTimeout(function(){$('body').ready(function (){$('#big').fadeIn('slow');});},3000);
+		
+
 		YUI().use('node', function(Y) {
 			
 			var ListItem, 
