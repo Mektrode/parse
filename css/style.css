@@ -1,10 +1,53 @@
+       /* body {
+            width: auto;
+            height: 100%;
+        }
+*/
+        /*.container  {
+            min-width:900px;
+            padding-top:359px;
+            position:relative;
+            width:100%;
+        }*/
+
         *{
             font-family: 'Chivo', sans-serif;
         }
 
         body {
+            background: #aedfe5 url('img/sky.png') 0 0 repeat-x;
+        }
+
+        .stage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-width: 900px;
+            height: 100%;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .far-clouds { 
+            background: transparent url('img/far-clouds.png') 305px 102px repeat-x; 
+        }
+
+        .near-clouds { 
+            background: transparent url('img/near-clouds.png') 305px 162px repeat-x; 
+        }
+
+        #body {
             font-family: "HelveticaNeue-Light", sans-serif;
             font-weight:300;
+            text-align: center;
+            padding: 0 25px;
+
+            position: absolute;
+            margin-left: 20%;
+            margin-top: 10%;
+            z-index: 101;
+            border: 1px black solid;
         }
 
         h2 {
@@ -18,10 +61,6 @@
 
         .hidden {
             display:none;
-        }
-
-        #main {
-            text-align:center;
         }
         
         input {
@@ -58,8 +97,7 @@
 
         #loader {
             padding: 10px;
-            margin-left: 40%;
-            margin-top: 25%;
+            margin: 0;
             width: 200px;
             height: 120px;
             background-color: white;
@@ -73,20 +111,16 @@
             text-align: center;
         }
         
-        body {
-            background: #eee;
-            text-align: center;
-            padding: 0 25px;
-        }
-
         #main {
             width: 500px;
-            margin: auto;
+            margin: 0;
             text-align: left;
             background: white;
             padding: 50px 60px;
             border: solid #ddd;
             border-width: 0 1px 1px 1px;
+
+            text-align:center;
         }
 
         #main h1 {
@@ -96,8 +130,7 @@
 
         #login {
             padding: 10px;
-            margin-left: 32%;
-            margin-top: 20%;
+            margin: 0;
             width: 400px;
             height: 220px;
             background-color: white;
