@@ -37,7 +37,7 @@
             background: transparent url('img/near-clouds.png') 305px 162px repeat-x; 
         }
 
-        #body {
+        #center {
             font-family: "HelveticaNeue-Light", sans-serif;
             font-weight:300;
             text-align: center;
@@ -47,7 +47,20 @@
             margin-left: 20%;
             margin-top: 10%;
             z-index: 101;
-            border: 1px black solid;
+            width: 100px;
+            height: 80px;
+        }
+
+        #body {
+            font-family: "HelveticaNeue-Light", sans-serif;
+            font-weight:300;
+            text-align: center;
+            padding: 0 25px;
+
+            position: absolute;
+            margin-left: 20%;
+            margin-top: 10%;
+            z-index: 102;
         }
 
         h2 {

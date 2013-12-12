@@ -21,37 +21,39 @@
 		<div id="far-clouds" class="far-clouds stage"></div>
     	<div id="near-clouds" class="near-clouds stage"></div>
 
-		<div id="body">
-			<div id="loader">
-				<h2 style="text-transform:none;">Loading...</h2>
-				<img src="img/load.gif" class="center">
-			</div>
+    	<div id="center">
+    		<div id="body">
+				<div id="loader">
+					<h2 style="text-transform:none;">Loading...</h2>
+					<img src="img/load.gif" class="center">
+				</div>
 
-			<div id="login" class="hidden">
-				<h1>Login in here!</h1>
-				<input type="text" id="username">
-				<input type="password" id="password"><br>
-				<button onclick="login()">Login</button>
-				
-			</div>
+				<div id="login" class="hidden">
+					<h1>Login in here!</h1>
+					<input type="text" id="username">
+					<input type="password" id="password"><br>
+					<button onclick="login()">Login</button>					
+				</div>
 
 
-			<div id="big" class="hidden">
-			  <h1>Todo List built on <a href="http://www.parse.com" alt="Parse">Parse</a></h1>
-			  <div id="main">
-					<div id="input-wrapper">
-						<input type="text" id="list-input" placeholder="Enter a todo here...">
-						<input type="button" id="list-item-submit" value="Add">
-					</div>
-					<div>
-						<h2>Incomplete Tasks</h2>
-						<ul id="incomplete-items">
-							<li id="no-incomplete-message">There are no incomplete tasks! Consider adding one above.</li>
-						</ul>
-					</div>
-			  </div>
+				<div id="big" class="hidden">
+				  <h1>Todo List built on <a href="http://www.parse.com" alt="Parse">Parse</a></h1>
+				  	<div id="main">
+						<div id="input-wrapper">
+							<input type="text" id="list-input" placeholder="Enter a todo here...">
+							<input type="button" id="list-item-submit" value="Add">
+						</div>
+
+						<div>
+							<h2>Incomplete Tasks</h2>
+							<ul id="incomplete-items">
+								<li id="no-incomplete-message">There are no incomplete tasks! Consider adding one above.</li>
+							</ul>
+						</div>
+				  	</div>
+				</div>
 			</div>
-		</div>
+    	</div>
 
 	
 	<script id="todo-items-template" type="x/handlebars">
