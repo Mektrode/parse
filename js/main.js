@@ -15,6 +15,7 @@ setTimeout(function(){$('body').ready(function (){$('#loader').fadeOut(500);});}
 		}
 		
 		
+		
 		YUI().use('node', function(Y) {
 			
 			var ListItem, 
@@ -39,8 +40,17 @@ setTimeout(function(){$('body').ready(function (){$('#loader').fadeOut(500);});}
 				    login1();
 				  },
 				  error: function(user, error) {
-				    // The login failed. Check error to see why.
-				    alert('Error!');
+
+				 	function error() {
+						$('input').addClass('error').fadeIn(30000);
+						
+						$('input').click(function(){
+							$(this).removeClass('error');
+						});
+					};
+
+				    error();
+				    //alert('Error!');
 				  }
 				});
 
