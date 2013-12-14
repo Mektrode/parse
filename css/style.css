@@ -70,12 +70,32 @@
 
         a {
             text-decoration:none;
+            color: #666;
+            text-align: right;
+            float: right;
+            margin: auto;
         }
 
         .hidden {
             display:none;
         }
         
+        #sign {
+            text-align:  !important;
+            margin-top: 2px;
+            position: relative;
+        }
+
+        #loginbtn{
+            text-align: left;
+            float: left;
+            display: block;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 0px;
+            border: none;
+        }
+
         input {
             padding: 10px;
             border-radius: 3px;
@@ -154,7 +174,7 @@
             padding: 10px;
             margin: 0;
             width: 400px;
-            height: 220px;
+            height: 240px;
             background-color: white;
             border: solid #ddd;
             border-width: 0 1px 1px 1px;
