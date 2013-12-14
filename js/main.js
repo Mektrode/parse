@@ -3,7 +3,7 @@ setTimeout(function(){$('body').ready(function (){$('#loader').fadeOut(500);});}
 
 		setTimeout(function(){$('body').ready(function (){$('#login').fadeIn('slow');});},3000);
 
-		function login () {
+		function login1 () {
 			
 			setTimeout(function(){$('body').ready(function (){$('#login').fadeOut(500);});},1000);
 
@@ -19,6 +19,9 @@ setTimeout(function(){$('body').ready(function (){$('#loader').fadeOut(500);});}
 			
 			var ListItem, 
 			query,
+			user = Y.one('#username'),
+			pass = Y.one('#password'),
+			login = Y.one('#loginbtn'),
 			noTasksMessage = Y.one('#no-incomplete-message'),
 			submitBtn = Y.one("#list-item-submit"),
 			incompleteItemList = Y.one('#incomplete-items'),
@@ -28,6 +31,20 @@ setTimeout(function(){$('body').ready(function (){$('#loader').fadeOut(500);});}
 			
 			Parse.initialize("6MQR8G7nxeInwGvZ0Q8wg33SFJEb53pDx8uD2Xvc", "N5tGk2hvHE3ScR4IsqUt9COpPPbgRc1r9E0b8c4h");
 			
+			//Login
+			login.on('click', function(e) {
+
+				Parse.User.logIn("myname", "mypass", {
+				  success: function(user) {
+				    login1();
+				  },
+				  error: function(user, error) {
+				    // The login failed. Check error to see why.
+				    alert('Error!');
+				  }
+				});
+
+			});
 			//Handle Click Event
 			submitBtn.on('click', function(e) {
 				
