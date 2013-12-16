@@ -5,7 +5,18 @@ $(document).ready(function(){
 
 	setTimeout(function(){$('body').ready(function (){$('#login').fadeIn('slow');});},3000);
 
+	function signUp() {
+		setTimeout(function(){$('body').ready(function (){$('#login').fadeOut(1000);});},1000);
+
+		setTimeout(function(){$('body').ready(function(){$('#signUp').fadeIn('slow');});},2500);
+	}
+
+	$('h5').click(function(){
+		signUp();
+	});	
+
 });
+
 
 function login1 () {
 	
@@ -13,7 +24,7 @@ function login1 () {
 
 	setTimeout(function(){$('body').ready(function (){$('#big').fadeIn('slow');});},2000);
 }
-		
+
 // Get values
 var $username = $("#username"),
     $password = $("#password");
