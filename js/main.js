@@ -13,7 +13,15 @@ $(document).ready(function(){
 
 	$('h5').click(function(){
 		signUp();
-	});	
+	});
+
+	$('button').mouseenter(function(){
+        $(this).fadeTo('fast', 1);
+    });
+
+    $('button').mouseleave(function(){
+        $(this).fadeTo('fast', 0.5);
+    });
 
 });
 
@@ -27,9 +35,15 @@ function login1 () {
 
 // Get values
 var $username = $("#username"),
-    $password = $("#password");
+    $password = $("#password"),
+    $newName = $('#newName'),
+    $email = $('#email');
 
-    
+/*if () {
+
+};*/
+
+
 var username = $username.val(),
     password = $password.val();
 		
@@ -70,6 +84,13 @@ YUI().use('node', function(Y) {
 
 		});
 		
+	});
+
+
+	signUp.on('click', function(e){
+
+
+
 	});
 
 	//Handle Click Event
@@ -150,4 +171,4 @@ YUI().use('node', function(Y) {
 	  }
 	});
 	
-});
+});	

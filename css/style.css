@@ -88,6 +88,10 @@ a {
     border: none;
 }
 
+button {
+    background-color: #ddd;
+}
+
 #signUp {
     padding: 10px;
     margin: 0;
