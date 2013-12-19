@@ -23,6 +23,9 @@ $(document).ready(function(){
         $(this).fadeTo('fast', 0.5);
     });
 
+    $('#login').draggable();
+    $('#signUp').draggable();
+    $('#big').draggable();
 });
 
 
@@ -36,17 +39,46 @@ function login1 () {
 // Get values
 var $username = $("#username"),
     $password = $("#password"),
+
     $newName = $('#newName'),
+    $firstPass = $('#newPass'),
+    $secondPass = $('#repeat')
     $email = $('#email');
 
-/*if () {
-
-};*/
-
-
 var username = $username.val(),
-    password = $password.val();
-		
+    password = $password.val(),
+
+    newName = $newName.val(),
+    firstPass = $firstPass.val(),
+    secondPass = $secondPass.val(),
+    email = $email.val();
+
+var compare = function(first, second){
+
+	this.first = first;
+	this.second = second;
+
+	this.result = function(){
+		if(this.first === this.second){
+			result = this.first;
+		}
+		else{
+			result = "error";
+		}
+	}
+};
+
+var newPerson = function(name, pass, email){
+	this.username = name;
+	this.password = pass;
+	this.email = email;
+};
+
+var comparePass = new compare(firstPass, secondPass);
+
+
+
+
 YUI().use('node', function(Y) {
 	
 	var ListItem, 
@@ -88,6 +120,7 @@ YUI().use('node', function(Y) {
 
 
 	signUp.on('click', function(e){
+
 
 
 
