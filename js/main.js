@@ -6,9 +6,15 @@ $(document).ready(function(){
 	setTimeout(function(){$('body').ready(function (){$('#login').fadeIn('slow');});},3000);
 
 	function signUp() {
-		setTimeout(function(){$('body').ready(function (){$('#login').fadeOut(1000);});},1000);
+		setTimeout(function(){$('body').ready(function (){$('#login').fadeOut(700);});},700);
 
-		setTimeout(function(){$('body').ready(function(){$('#signUp').fadeIn('slow');});},2500);
+		setTimeout(function(){$('body').ready(function(){$('#signUp').fadeIn('slow');});},2000);
+	}
+
+	function backto() {
+		setTimeout(function(){$('body').ready(function (){$('#signUp').fadeOut(500);});},500);
+
+		setTimeout(function(){$('body').ready(function(){$('#login').fadeIn('slow');});},1500);
 	}
 
 	$('h5').click(function(){
@@ -22,6 +28,10 @@ $(document).ready(function(){
     $('button').mouseleave(function(){
         $(this).fadeTo('fast', 0.5);
     });
+
+    $('h6').click(function(){
+		backto();
+	});
 
     $('#login').draggable();
     $('#signUp').draggable();
@@ -121,7 +131,20 @@ YUI().use('node', function(Y) {
 
 	signUp.on('click', function(e){
 
+		Parse.User.newserr()= {
 
+		}
+
+		var query = new Parse.Query(Parse.User);
+		query.equalTo(userame, chosenName);  // find all the women
+		query.find({
+		  success: function(women) {
+		    chosenName = newUsername;
+		  },
+		  error: function(){
+		  	alert('That username has already been taken!');
+		  }
+		});
 
 
 	});

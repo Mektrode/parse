@@ -176,6 +176,17 @@ li input {
     font-size: 35px;
 }
 
+#backtoLogin {
+    float: left !important;
+    text-align: left;
+}
+
+#back {
+    /*float: left !important;*/
+    margin-right: 0;
+
+}
+
 #login {
     padding: 10px;
     margin: 0;
