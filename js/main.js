@@ -39,6 +39,10 @@ $(document).ready(function(){
 		alert('working so far');
 	});
 
+	$('#signUpbtn').click(function(){
+		sign();
+		alert('working so far');
+	});
 
     $('#login').draggable();
     $('#signUp').draggable();
@@ -121,30 +125,35 @@ function logon() {
 		});
 };
 
-/*
-	login.on('click', function(e) {
+function sign() {
 
-		Parse.User.logIn(username, password, {
-		  success: function(user) {
-		    login1();
-		    console.log('Logged in');
+	var	$newName = $('#newName'),
+    	$firstPass = $('#newPass'),
+    	$secondPass = $('#repeat')
+    	$email = $('#email');
+	
+	var newName = $newName.val(),
+    	firstPass = $firstPass.val(),
+    	secondPass = $secondPass.val(),
+    	email = $email.val();
+
+	/*Parse.User.newserr()= {
+
+		}
+
+		var query = new Parse.Query(Parse.User);
+		query.equalTo(userame, chosenName);  // find all the women
+		query.find({
+		  success: function(women) {
+		    chosenName = newUsername;
 		  },
-
-		  error: function(user, error) {
-		 	function error() {
-				$('input').addClass('error');
-
-				$('input').click(function(){
-					$(this).removeClass('error');
-				});
-			};
-		    error();
-		  };
+		  error: function(){
+		  	alert('That username has already been taken!');
+		  }
 		});
-	});
-		*/
 
-
+	*/
+};
 
 
 
@@ -152,9 +161,6 @@ YUI().use('node', function(Y) {
 	
 	var ListItem, 
 	query,
-	/*user = Y.one('#username'),
-	pass = Y.one('#password'),*/
-	//login = Y.one('#loginbtn'),
 	noTasksMessage = Y.one('#no-incomplete-message'),
 	submitBtn = Y.one("#list-item-submit"),
 	incompleteItemList = Y.one('#incomplete-items'),
