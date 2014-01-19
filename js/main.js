@@ -42,7 +42,6 @@ $(document).ready(function(){
 
 	$('#signUpbtn').click(function(){
 		sign();
-		alert('working so far');
 	});
 
     $('#login').draggable();
@@ -144,6 +143,28 @@ function sign() {
     	firstPass = $firstPass.val(),
     	secondPass = $secondPass.val(),
     	email = $email.val();
+
+    console.log(newName + firstPass + secondPass + email);
+
+    // Validate
+		
+		if (newName.length == 0) {
+			
+			alert("Type in your new Username");
+		}
+
+		else if (firstPass.length == 0) {
+			alert("Type in your new Username");
+		}
+
+		else if (email.length == 0) {
+			alert("Type in your email");
+		}
+
+		else if (firstPass.val === secondPass.val) {
+			//alert("Wrong username or password! Please try again.");
+			alert("Password mismatch!");
+		}
 
 	/*Parse.User.newserr()= {
 
