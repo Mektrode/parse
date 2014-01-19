@@ -36,7 +36,6 @@ $(document).ready(function(){
 
 	$('#loginbtn').click(function(){
 		logon();
-		alert('working so far');
 	});
 
 	$('#signUpbtn').click(function(){
