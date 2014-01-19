@@ -22,12 +22,14 @@ $(document).ready(function(){
 		signUp();
 	});
 
+	$('button').fadeTo( 200 ,0.7);
+
 	$('button').mouseenter(function(){
         $(this).fadeTo('fast', 1);
     });
 
     $('button').mouseleave(function(){
-        $(this).fadeTo('fast', 0.5);
+        $(this).fadeTo('fast', 0.7);
     });
 
     $('h6').click(function(){
@@ -113,11 +115,18 @@ function logon() {
 
 		  error: function(user, error) {
 		 	function error() {
-				$('input').addClass('error');
+				$('#username').addClass('error');
 
-				$('input').click(function(){
+				$('#username').click(function(){
 					$(this).removeClass('error');
 				});
+
+				$('#password').addClass('error');
+
+				$('#password').click(function(){
+					$(this).removeClass('error');
+				});
+
 			};
 		    error();
 		  }
