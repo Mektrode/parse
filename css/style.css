@@ -68,6 +68,13 @@ a {
     margin: auto;
 }
 
+#noedit {
+    text-decoration:none;
+    color: blue !important;
+    text-align: none !important;
+    float: none !important;
+}
+
 .hidden {
     display:none;
 }
