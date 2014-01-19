@@ -1,3 +1,4 @@
+Parse.initialize("6MQR8G7nxeInwGvZ0Q8wg33SFJEb53pDx8uD2Xvc", "N5tGk2hvHE3ScR4IsqUt9COpPPbgRc1r9E0b8c4h");
 
 $(document).ready(function(){
 
@@ -32,6 +33,12 @@ $(document).ready(function(){
     $('h6').click(function(){
 		backto();
 	});
+
+	$('#loginbtn').click(function(){
+		logon();
+		alert('working so far');
+	});
+
 
     $('#login').draggable();
     $('#signUp').draggable();
@@ -87,30 +94,18 @@ var newPerson = function(name, pass, email){
 var comparePass = new compare(firstPass, secondPass);
 
 
+//Logon
+function logon() {
+	var $username = $("#username"),
+    	$password = $("#password");
+	
+	var username = $username.val(),
+    	password = $password.val();
 
-
-YUI().use('node', function(Y) {
-	
-	var ListItem, 
-	query,
-	/*user = Y.one('#username'),
-	pass = Y.one('#password'),*/
-	login = Y.one('#loginbtn'),
-	noTasksMessage = Y.one('#no-incomplete-message'),
-	submitBtn = Y.one("#list-item-submit"),
-	incompleteItemList = Y.one('#incomplete-items'),
-	completeItemList = Y.one('#complete-items'),
-	input = Y.one("#list-input");
-	
-	
-	Parse.initialize("6MQR8G7nxeInwGvZ0Q8wg33SFJEb53pDx8uD2Xvc", "N5tGk2hvHE3ScR4IsqUt9COpPPbgRc1r9E0b8c4h");
-	
-	//Login
-	login.on('click', function(e) {
-
-		Parse.User.logIn(username, password, {
+	Parse.User.logIn(username, password, {
 		  success: function(user) {
 		    login1();
+		    console.log('Logged in');
 		  },
 
 		  error: function(user, error) {
@@ -123,13 +118,52 @@ YUI().use('node', function(Y) {
 			};
 		    error();
 		  }
-
 		});
-		
+};
+
+/*
+	login.on('click', function(e) {
+
+		Parse.User.logIn(username, password, {
+		  success: function(user) {
+		    login1();
+		    console.log('Logged in');
+		  },
+
+		  error: function(user, error) {
+		 	function error() {
+				$('input').addClass('error');
+
+				$('input').click(function(){
+					$(this).removeClass('error');
+				});
+			};
+		    error();
+		  };
+		});
 	});
+		*/
 
 
-	signUp.on('click', function(e){
+
+
+
+YUI().use('node', function(Y) {
+	
+	var ListItem, 
+	query,
+	/*user = Y.one('#username'),
+	pass = Y.one('#password'),*/
+	//login = Y.one('#loginbtn'),
+	noTasksMessage = Y.one('#no-incomplete-message'),
+	submitBtn = Y.one("#list-item-submit"),
+	incompleteItemList = Y.one('#incomplete-items'),
+	completeItemList = Y.one('#complete-items'),
+	input = Y.one("#list-input");
+	
+	
+
+	/*signUp.on('click', function(e){
 
 		Parse.User.newserr()= {
 
@@ -147,7 +181,7 @@ YUI().use('node', function(Y) {
 		});
 
 
-	});
+	});*/
 
 	//Handle Click Event
 	submitBtn.on('click', function(e) {
