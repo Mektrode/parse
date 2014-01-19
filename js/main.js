@@ -161,17 +161,44 @@ function sign() {
 			alert("Type in your email");
 		}
 
-		else if (firstPass.val === secondPass.val) {
+		/*else if (firstPass === secondPass) {
 			//alert("Wrong username or password! Please try again.");
 			alert("Password mismatch!");
+		}*/
+
+		else {
+			sss();
 		}
+
+		function sss () {
+
+			var user = new Parse.User();
+
+			user.set("username", newName);
+			user.set("password", secondPass);
+			user.set("email", email);
+			
+			 
+			user.signUp(null, {
+			  success: function(user) {
+			    // Hooray! Let them use the app now.
+			    alert("You have successfully signed up now! Go back and login with your new Username and Password!");
+			  },
+			  error: function(user, error) {
+			    // Show the error message somewhere and let the user try again.
+			    alert("Error: " + error.code + " " + error.message);
+			  }
+			});
+		}
+
+		
 
 	/*Parse.User.newserr()= {
 
 		}
 
 		var query = new Parse.Query(Parse.User);
-		query.equalTo(userame, chosenName);  // find all the women
+		query.equalTo(userame, newName);  // find all the women
 		query.find({
 		  success: function(women) {
 		    chosenName = newUsername;
