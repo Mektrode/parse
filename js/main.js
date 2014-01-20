@@ -135,6 +135,8 @@ function logon() {
 					$(this).removeClass('error');
 				});
 
+				$( "#login" ).effect("shake");
+
 			};
 		    error();
 		  }
