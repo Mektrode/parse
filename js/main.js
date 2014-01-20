@@ -2,9 +2,13 @@ Parse.initialize("6MQR8G7nxeInwGvZ0Q8wg33SFJEb53pDx8uD2Xvc", "N5tGk2hvHE3ScR4Isq
 
 $(document).ready(function(){
 
-	setTimeout(function(){$('body').ready(function (){$('#loader').fadeOut(500);});},2000);
+	setTimeout(function(){
+		$('body').ready(function (){
+			$('#loader').toggle( "bounce", { times: 3 }, 2100 );
+		});
+	},1000);
 
-	setTimeout(function(){$('body').ready(function (){$('#login').fadeIn('slow');});},3000);
+	setTimeout(function(){$('body').ready(function (){$('#login').fadeIn('slow');});},3500);
 
 	function signUp() {
 		setTimeout(function(){$('body').ready(function (){$('#login').fadeOut(700);});},700);
@@ -47,6 +51,7 @@ $(document).ready(function(){
     $('#login').draggable();
     $('#signUp').draggable();
     $('#big').draggable();
+
 });
 
 
@@ -55,6 +60,10 @@ function login1 () {
 	setTimeout(function(){$('body').ready(function (){$('#login').fadeOut(500);});},1000);
 
 	setTimeout(function(){$('body').ready(function (){$('#big').fadeIn('slow');});},2000);
+
+	var user = Parse.User.current();
+
+	$("userr").append(user);	
 }
 
 // Get values
@@ -108,7 +117,7 @@ function logon() {
 
 	Parse.User.logIn(username, password, {
 		  success: function(user) {
-		    login1();
+		    login1(user);
 		    console.log('Logged in');
 		  },
 
@@ -191,8 +200,6 @@ function sign() {
 			});
 		}
 
-		
-
 	/*Parse.User.newserr()= {
 
 		}
@@ -207,7 +214,6 @@ function sign() {
 		  	alert('That username has already been taken!');
 		  }
 		});
-
 	*/
 };
 
