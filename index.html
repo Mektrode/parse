@@ -62,7 +62,7 @@
 
 					<label>Repeat password: <input type="password" id="repeat"></label><br>
 
-					<label>Enter your email: <input type="text" id="email"></label><br>
+					<label>Enter your email: <input type="text" id="email" title="Email is optional."></label><br>
 
 					<!--Lil side fade in pop up when email box clicked for promotion of ad emails using Madrill..-->
 
@@ -73,6 +73,7 @@
 				<div id="big" class="hidden">
 				  <h1>Todo List built on <a href="http://www.parse.com" id="noedit" alt="Parse">Parse</a></h1>
 				  	<div id="main">
+				  		<center><i>Welcome, <span id="userr"></span></i></center>
 						<div id="input-wrapper">
 							<input type="text" id="list-input" placeholder="Enter a todo here...">
 							<input type="button" id="list-item-submit" value="Add">
@@ -100,6 +101,8 @@
         $('#far-clouds').pan({fps: 30, speed: 0.7, dir: 'left', depth: 30});
         $('#near-clouds').pan({fps: 30, speed: 1, dir: 'left', depth: 70});
 	});
+	
+    $(document).tooltip({ track: true });
 
 	</script>
 </body>
