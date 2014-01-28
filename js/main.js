@@ -63,7 +63,7 @@ function login1 () {
 
 	var user = Parse.User.current();
 
-	$("userr").append(user);	
+	$("#userr").append(user);	
 }
 
 // Get values
@@ -194,6 +194,7 @@ function sign() {
 			  success: function(user) {
 			    // Hooray! Let them use the app now.
 			    alert("You have successfully signed up now! Go back and login with your new Username and Password!");
+			    email();
 			  },
 			  error: function(user, error) {
 			    // Show the error message somewhere and let the user try again.
