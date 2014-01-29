@@ -37,7 +37,7 @@ body {
     width: 99.89%;
     min-width: 80%;
 
-    height: 50px;
+    height: 59px;
     z-index: 1000;
 }
 
@@ -56,9 +56,11 @@ body {
     text-align: right;
     float: right;
 }
-    #nav ul li{
+    #nav li{
         display: inline-block;
         height: 49px;
+        padding: 0 !important;
+        border-bottom:1px solid #ababab;
     }
     #nav li a{
         padding: 20px;
