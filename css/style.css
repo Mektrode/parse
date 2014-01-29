@@ -51,7 +51,7 @@ body {
 }
 */
 #nav{
-    width: 60%;
+    width: auto;
     display: inline-block;
     text-align: right;
     float: right;
