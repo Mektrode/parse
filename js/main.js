@@ -1,3 +1,4 @@
+
 Parse.initialize("6MQR8G7nxeInwGvZ0Q8wg33SFJEb53pDx8uD2Xvc", "N5tGk2hvHE3ScR4IsqUt9COpPPbgRc1r9E0b8c4h");
 
 $(document).ready(function(){
@@ -8,22 +9,38 @@ $(document).ready(function(){
 		});
 	},1000);
 
-	setTimeout(function(){$('body').ready(function (){$('#login').fadeIn('slow');});},3500);
+	setTimeout(
+		function(){
+			$('body').ready(function (){
+				$('#login').fadeIn('slow');
+			});
+		},3500);
 
-	function signUp() {
-		setTimeout(function(){$('body').ready(function (){$('#login').fadeOut(700);});},700);
+	function animate(oldPage,newPage) {
+		setTimeout(
+			function(){
+				$('body').ready(function (){
+					$(oldPage).fadeOut(700);
+				});
+			},700);
 
-		setTimeout(function(){$('body').ready(function(){$('#signUp').fadeIn('slow');});},2000);
+		setTimeout(
+			function(){
+				$('body').ready(function(){
+					$(newPage).fadeIn('slow');
+				});
+			},1500);
 	}
 
-	function backto() {
-		setTimeout(function(){$('body').ready(function (){$('#signUp').fadeOut(500);});},500);
-
-		setTimeout(function(){$('body').ready(function(){$('#login').fadeIn('slow');});},1500);
-	}
-
+	
 	$('h5').click(function(){
-		signUp();
+		//signUp();
+		animate('#login','#signUp');
+	});
+
+	$('h6').click(function(){
+		//backto();
+		animate('#signUp','#login');
 	});
 
 	$('button').fadeTo( 200 ,0.7);
@@ -35,10 +52,6 @@ $(document).ready(function(){
     $('button').mouseleave(function(){
         $(this).fadeTo('fast', 0.7);
     });
-
-    $('h6').click(function(){
-		backto();
-	});
 
 	$('#loginbtn').click(function(){
 		logon();
@@ -55,15 +68,24 @@ $(document).ready(function(){
 });
 
 
-function login1 () {
+function login1 (username) {
 	
 	setTimeout(function(){$('body').ready(function (){$('#login').fadeOut(500);});},1000);
 
 	setTimeout(function(){$('body').ready(function (){$('#big').fadeIn('slow');});},2000);
 
-	var user = Parse.User.current();
+	setTimeout(
+		function(){
+			$('body').ready(function (){
+				$('#header').fadeIn('slow');
+			});
+		},3000);
 
-	$("#userr").append(user);	
+	/*var currentUser = Parse.User.current();
+	if (currentUser) {
+	    $("#userr").append(username);
+	}*/
+	$("#userr").text(username);
 }
 
 // Get values
@@ -117,7 +139,7 @@ function logon() {
 
 	Parse.User.logIn(username, password, {
 		  success: function(user) {
-		    login1(user);
+		    login1(username);
 		    console.log('Logged in');
 		  },
 
@@ -203,10 +225,7 @@ function sign() {
 			});
 		}
 
-	/*Parse.User.newserr()= {
-
-		}
-
+	/*
 		var query = new Parse.Query(Parse.User);
 		query.equalTo(userame, newName);  // find all the women
 		query.find({

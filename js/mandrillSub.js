@@ -16,7 +16,7 @@ var params = {
     "message": {
         "from_email":"mowz971@gmail.com",
         "to":[{"email": email}],
-        "subject": "Welcome to the Fluent Web app *|dude|*!",
+        "subject": "Welcome to the Fluent Web App *|dude|*!",
         "html": "<p>Dear *|dude|*,</p><p>Please click the link below to confirm your subscription to the Fluent web app</p><img src=\"http://www.bjmlegal.co.uk/wp-content/uploads/2013/09/hello-1774.jpg\">",
         "autotext": true,
         "track_opens" : true,
