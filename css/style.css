@@ -1,9 +1,10 @@
-*{
+/**{
     font-family: 'Chivo', sans-serif;
-}
+}*/
 
 body {
     background: #aedfe5 url('img/sky.png') 0 0 repeat-x;
+    font-family: 'Chivo', sans-serif;
 }
 
 .stage {
@@ -37,19 +38,18 @@ body {
     width: 99.89%;
     min-width: 80%;
 
-    height: 59px;
+    height: 55px;
     z-index: 1000;
 }
 
-/*#header > nav {
-    display: inline-block;
-    float: right;
+
+#logo {
+
+    font-size: 33px;
+    font-family: 'Kaushan Script', cursive !important;
 }
 
-#header > li a {
-    display: inline-block;
-}
-*/
+
 #nav{
     width: auto;
     display: inline-block;
@@ -63,6 +63,7 @@ body {
     }
     #nav li a{
         padding: 20px;
+        padding-bottom: 16px;
         background: c8c8c8;
         color: white;
         text-decoration: none;
