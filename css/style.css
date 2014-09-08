@@ -15,7 +15,6 @@ body {
     min-width: 900px;
     height: 100%;
     overflow: hidden;
-    z-index: 100;
 }
 
 .far-clouds { 
